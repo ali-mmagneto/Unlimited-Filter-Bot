@@ -1,63 +1,53 @@
 class Script(object):
 
-    START_MSG = """<b>Hy {},
+    START_MSG = """<b>Hey {},
 
-I'm an advanced filter bot with many capabilities!
-There is no practical limits for my filtering capacity :)
+Ben bir filter botuyum ve filterlarla ilgili bir sınırım yok ekle ekleyebildiğin kadar :)
 
-See <i>/help</i> for commands and more details.</b>
+<i>/help</i> detaylar için kullan.</b>
 """
 
 
     HELP_MSG = """
-<i>Add me as admin in your group and start filtering :)</i>
+<i>Beni grubunuza yönetici olarak ekle ve filtrelemeye başla :)</i>
 
 
 <b>Basic Commands;</b>
 
-/start - Check if I'm alive!
-/help - Command help
-/about - Something about me!
+/start - Hayatta olup olmadığımı kontrol et!
+/help - Yardım komutu
+/about - Benim hakkımda bişiler!
 
 
-<b>Filter Commands;</b>
+<b>Filtre Komutları;</b>
 
-<code>/add name reply</code>  -  Add filter for name
+<code>/filter Filtreismi</code>  -  Ad için filtre ekleme
 
-<code>/del name</code>  -  Delete filter
+<code>/del Filtreismi</code>  -  Filter Silme
 
-<code>/delall</code>  -  Delete entire filters (Group Owner Only!)
+<code>/delall</code>  -  Filtrelerin tamamını silme (Yalnızca Grup Sahibi!) 
 
-<code>/viewfilters</code>  -  List all filters in chat
+<code>/viewfilters</code>  -  Sohbetteki tüm filtreleri listeleme
 
 
 <b>Connection Commands;</b>
 
-<code>/connect groupid</code>  -  Connect your group to my PM. You can also simply use,
+<code>/connect grupid</code>  -  Grubunuzu PM'ime bağlayın. Ayrıca kolayca kullanabilirsiniz,
 <code>/connect</code> in groups.
 
-<code>/connections</code>  -  Manage your connections.
+<code>/connections</code>  -  Bağlantılarınızı yönetme.
 
 
-<b>Extras;</b>
-
-/status  -  Shows current status of your bot (Auth User Only)
-
-/id  -  Shows ID information
-
-<code>/info userid</code>  -  Shows User Information. Use <code>/info</code> as reply to some message for their details!
-
-
-<b>© @TroJanzHEX</b>
+<b>© @mmagneto</b>
 """
 
 
-    ABOUT_MSG = """⭕️<b>My Name : TroJanz Filter Bot</b>
+    ABOUT_MSG = """⭕️<b>Benim Adım : Filtre Botu</b>
 
-⭕️<b>Creater :</b> @TroJanzHEX    
+⭕️<b>Oluşturan:</b> @mmagneto   
 
-⭕️<b>Language :</b> <code>Python3</code>
+⭕️<b>Dil :</b> <code>Python3</code>
 
-⭕️<b>Library :</b> <a href='https://docs.pyrogram.org/'>Pyrogram 1.0.7</a> 
+⭕️<b>Kütüphane :</b> <a href='https://docs.pyrogram.org/'>Pyrogram 1.0.7</a> 
 
 """
