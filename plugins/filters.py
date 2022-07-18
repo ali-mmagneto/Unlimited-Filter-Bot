@@ -41,10 +41,10 @@ async def addfilter(client, message):
                 chat = await client.get_chat(grpid)
                 title = chat.title
             except:
-                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                await message.reply_text("Grubunuzda bulunduğumdan emin olun!!", quote=True)
                 return
         else:
-            await message.reply_text("I'm not connected to any groups!", quote=True)
+            await message.reply_text("Herhangi bir gruba bağlı değilim!", quote=True)
             return
 
     elif (chat_type == "group") or (chat_type == "supergroup"):
@@ -60,21 +60,21 @@ async def addfilter(client, message):
         
 
     if len(args) < 2:
-        await message.reply_text("Command Incomplete :(", quote=True)
+        await message.reply_text("Komut Eksik :(", quote=True)
         return
     
     extracted = split_quotes(args[1])
     text = extracted[0].lower()
    
     if not message.reply_to_message and len(extracted) < 2:
-        await message.reply_text("Add some content to save your filter!", quote=True)
+        await message.reply_text("Filtrenizi kaydetmek için bazı içerikler eklemelisin!", quote=True)
         return
 
     if (len(extracted) >= 2) and not message.reply_to_message:
         reply_text, btn, alert = parser(extracted[1], text)
         fileid = None
         if not reply_text:
-            await message.reply_text("You cannot have buttons alone, give some text to go with it!", quote=True)
+            await message.reply_text("Tek başına butonlara sahip olamazsınız, onunla birlikte gitmek için biraz metin ver!", quote=True)
             return
 
     elif message.reply_to_message and message.reply_to_message.reply_markup:
@@ -169,7 +169,7 @@ async def addfilter(client, message):
     await add_filter(grp_id, text, reply_text, btn, fileid, alert)
 
     await message.reply_text(
-        f"Filter for  `{text}`  added in  **{title}**",
+        f"Filtre  `{text}` için  **{title}** grubuna eklendi!",
         quote=True,
         parse_mode="md"
     )
@@ -189,10 +189,10 @@ async def get_all(client, message):
                 chat = await client.get_chat(grpid)
                 title = chat.title
             except:
-                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                await message.reply_text("Grubunda mıyım bak bi!!", quote=True)
                 return
         else:
-            await message.reply_text("I'm not connected to any groups!", quote=True)
+            await message.reply_text("Hiç bir gruba bağlı değilim!", quote=True)
             return
 
     elif (chat_type == "group") or (chat_type == "supergroup"):
@@ -209,7 +209,7 @@ async def get_all(client, message):
     texts = await get_filters(grp_id)
     count = await count_filters(grp_id)
     if count:
-        filterlist = f"Total number of filters in **{title}** : {count}\n\n"
+        filterlist = f"**{title}** için tüm filterlar: {count}\n\n"
 
         for text in texts:
             keywords = " ×  `{}`\n".format(text)
@@ -225,8 +225,7 @@ async def get_all(client, message):
                 )
             return
     else:
-        filterlist = f"There are no active filters in **{title}**"
-
+        filterlist = "**{title}** için hiç filter yok!"
     await message.reply_text(
         text=filterlist,
         quote=True,
@@ -246,10 +245,10 @@ async def deletefilter(client, message):
                 chat = await client.get_chat(grpid)
                 title = chat.title
             except:
-                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                await message.reply_text("Grubunda mıyım bak bi!!", quote=True)
                 return
         else:
-            await message.reply_text("I'm not connected to any groups!", quote=True)
+            await message.reply_text("Hiç bir grupla bağım yok!", quote=True)
 
     elif (chat_type == "group") or (chat_type == "supergroup"):
         grp_id = message.chat.id
@@ -266,9 +265,9 @@ async def deletefilter(client, message):
         cmd, text = message.text.split(" ", 1)
     except:
         await message.reply_text(
-            "<i>Mention the filtername which you wanna delete!</i>\n\n"
-            "<code>/del filtername</code>\n\n"
-            "Use /viewfilters to view all available filters",
+            "<i>Silmek istediğiniz filtre adını belirtin!</i>\n\n"
+            "<code>/del filterismi</code>\n\n"
+            "Tüm filterları görmek için /viewfilters ı kulan!",
             quote=True
         )
         return
@@ -291,10 +290,10 @@ async def delallconfirm(client, message):
                 chat = await client.get_chat(grpid)
                 title = chat.title
             except:
-                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                await message.reply_text("Grubunda mıyım bak bi!!", quote=True)
                 return
         else:
-            await message.reply_text("I'm not connected to any groups!", quote=True)
+            await message.reply_text("Hiç bir grupla bağım yok!", quote=True)
             return
 
     elif (chat_type == "group") or (chat_type == "supergroup"):
@@ -307,10 +306,10 @@ async def delallconfirm(client, message):
     st = await client.get_chat_member(grp_id, userid)
     if (st.status == "creator") or (str(userid) in Config.AUTH_USERS):
         await message.reply_text(
-            f"This will delete all filters from '{title}'.\nDo you want to continue??",
+            f" '{title}' grubundaki tüm filterları silinecek.\nDevam etmek istiyor musun??",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text="YES",callback_data="delallconfirm")],
-                [InlineKeyboardButton(text="CANCEL",callback_data="delallcancel")]
+                [InlineKeyboardButton(text="Evet",callback_data="delallconfirm")],
+                [InlineKeyboardButton(text="İptal",callback_data="delallcancel")]
             ]),
             quote=True
         )
