@@ -208,6 +208,8 @@ async def get_all(client, message):
 
     texts = await get_filters(grp_id)
     count = await count_filters(grp_id)
+    filterlar = 
+
     if count:
         filterlist = f"**{title}** için tüm filterlar: {count}\n\n"
 
