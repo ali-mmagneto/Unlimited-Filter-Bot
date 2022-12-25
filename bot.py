@@ -6,6 +6,9 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     from sample_config import Config
 
+import time
+StartTime = time.time()
+__version__ = 1.1
 
 
 if __name__ == "__main__" :
