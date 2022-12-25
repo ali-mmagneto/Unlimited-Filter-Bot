@@ -6,10 +6,6 @@ import shutil, psutil
 import heroku3
 import requests
 
-import time
-StartTime = time.time()
-__version__ = 1.1
-
 from pyrogram import filters
 from pyrogram import Client as trojanz
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -21,6 +17,7 @@ else:
 
 from script import Script
 from plugins.helpers import humanbytes
+from plugins.helpers import StartTime
 from database.filters_mdb import filter_stats
 from database.users_mdb import add_user, find_user, all_users
 
