@@ -277,23 +277,23 @@ async def about(client, message):
 
 @trojanz.on_message(filters.command('durum') & filters.regex("status📊"))
 async def stats(client, message):
-  currentTime = readable_time((time.time() - StartTime))
-  total, used, free = shutil.disk_usage('.')
-  total = get_readable_file_size(total)
-  used = get_readable_file_size(used)
-  free = get_readable_file_size(free)
-  sent = get_readable_file_size(psutil.net_io_counters().bytes_sent)
-  recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
-  cpuUsage = psutil.cpu_percent(interval=0.5)
-  memory = psutil.virtual_memory().percent
-  disk = psutil.disk_usage('/').percent
-  botstats = f'<b>Bot Uptime:</b> {currentTime}\n' \
-            f'<b>Tüm Disk Kapasitesi:</b> {total}\n' \
-            f'<b>Kullanılan:</b> {used}  ' \
-            f'<b>Boş:</b> {free}\n\n' \
-            f'📊Veri Kullanımı📊\n<b>Upload:</b> {sent}\n' \
-            f'<b>İndirme:</b> {recv}\n\n' \
-            f'<b>CPU:</b> {cpuUsage}% ' \
-            f'<b>RAM:</b> {memory}% ' \
-            f'<b>Disk:</b> {disk}%'
-  await message.reply_text(botstats)
+    currentTime = readable_time((time.time() - StartTime))
+    total, used, free = shutil.disk_usage('.')
+    total = get_readable_file_size(total)
+    used = get_readable_file_size(used)
+    free = get_readable_file_size(free)
+    sent = get_readable_file_size(psutil.net_io_counters().bytes_sent)
+    recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
+    cpuUsage = psutil.cpu_percent(interval=0.5)
+    memory = psutil.virtual_memory().percent
+    disk = psutil.disk_usage('/').percent
+    botstats = f'<b>Bot Uptime:</b> {currentTime}\n' \
+              f'<b>Tüm Disk Kapasitesi:</b> {total}\n' \
+              f'<b>Kullanılan:</b> {used}  ' \
+              f'<b>Boş:</b> {free}\n\n' \
+              f'📊Veri Kullanımı📊\n<b>Upload:</b> {sent}\n' \
+              f'<b>İndirme:</b> {recv}\n\n' \
+              f'<b>CPU:</b> {cpuUsage}% ' \
+              f'<b>RAM:</b> {memory}% ' \
+              f'<b>Disk:</b> {disk}%'
+    await message.reply_text(botstats)
