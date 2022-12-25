@@ -2,8 +2,7 @@ import os
 import math
 import json
 import time
-import shutil
-import psutil
+import shutil, psutil
 import heroku3
 import requests
 
