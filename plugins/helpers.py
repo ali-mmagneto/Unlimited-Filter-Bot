@@ -3,12 +3,6 @@ import re
 from typing import List
 from pyrogram.types import InlineKeyboardButton
 
-import time
-StartTime = time.time()
-__version__ = 1.1
-
-
-
 BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
 )
