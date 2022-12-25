@@ -17,7 +17,7 @@ else:
 
 from script import Script
 from plugins.helpers import humanbytes
-from plugins.helpers import StartTime
+from bot import StartTime
 from database.filters_mdb import filter_stats
 from database.users_mdb import add_user, find_user, all_users
 
