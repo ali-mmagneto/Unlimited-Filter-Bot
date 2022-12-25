@@ -296,4 +296,4 @@ async def stats(client, message):
             f'<b>CPU:</b> {cpuUsage}% ' \
             f'<b>RAM:</b> {memory}% ' \
             f'<b>Disk:</b> {disk}%'
-  await client.reply_text(botstats)
+  await message.reply_text(botstats)
