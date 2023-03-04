@@ -6,9 +6,7 @@ import re
 import os
 from os import environ
 from dotenv import load_dotenv
-from pyrogram import Client, __version__
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram import Client, enums
+from pyrogram import Client
 import string
 import random
 import re
@@ -16,14 +14,12 @@ import os
 from os import environ
 from dotenv import load_dotenv
 import time, requests
-from pyrogram import __version__
-from platform import python_version
 
 from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
-from pyrogram import Client, enums
+from pyrogram import Client
 import logging
 import logging.config
 
