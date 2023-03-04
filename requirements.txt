@@ -4,3 +4,4 @@ umongo
 dnspython
 heroku3
 psutil
+python-dotenv
