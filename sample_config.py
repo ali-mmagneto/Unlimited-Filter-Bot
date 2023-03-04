@@ -15,9 +15,6 @@ from os import environ
 from dotenv import load_dotenv
 import time, requests
 
-from helper_func.dbhelper import Database as Db
-db = Db().setup()
-
 import pyrogram
 from pyrogram import Client
 import logging
