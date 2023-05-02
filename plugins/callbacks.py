@@ -167,7 +167,6 @@ async def cb_handler(client, query):
         await query.message.edit_text(
             f"Group Name : **{title}**\nGroup ID : `{group_id}`",
             reply_markup=keyboard,
-            parse_mode="md"
         )
         return
 
@@ -183,13 +182,11 @@ async def cb_handler(client, query):
         if mkact:
             await query.message.edit_text(
                 f"Connected to **{title}**",
-                parse_mode="md"
             )
             return
         else:
             await query.message.edit_text(
                 f"Some error occured!!",
-                parse_mode="md"
             )
             return
 
@@ -204,13 +201,11 @@ async def cb_handler(client, query):
         if mkinact:
             await query.message.edit_text(
                 f"Disconnected from **{title}**",
-                parse_mode="md"
             )
             return
         else:
             await query.message.edit_text(
                 f"Some error occured!!",
-                parse_mode="md"
             )
             return
     elif "deletecb" in query.data:
