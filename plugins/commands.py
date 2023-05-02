@@ -104,7 +104,7 @@ async def showinfo(client, message):
         f"<b>Kullanıcı Adı</b> : {user_name}\n\n"
         f"<b>Kullanıcı Link</b> : <a href='tg://user?id={id}'>Click here!</a>\n\n"
         f"<b>DC ID</b> : {dcid}\n\n",
-        quote=True,
+        quote=True
     )
 
 
@@ -202,7 +202,7 @@ async def bot_status(client,message):
         f"> __BOT Uptime__ : **{uptime}**\n\n"
         f"{quota_details}"
         f"{disk}",
-        quote=True,
+        quote=True
     )
 
 
