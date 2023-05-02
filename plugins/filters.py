@@ -170,9 +170,8 @@ async def addfilter(client, message):
 
     await message.reply_text(
         f"Filtre  `{text}` için  **{title}** grubuna eklendi!",
-        quote=True,
-        parse_mode="md"
-    )
+        quote=True
+    ) 
 
 
 @Client.on_message(filters.command('viewfilters'))
@@ -230,8 +229,7 @@ async def get_all(client, message):
     await message.reply_text(
         text=filterlist,
         quote=True,
-        parse_mode="md"
-    )
+    ) 
         
 @Client.on_message(filters.command(Config.DELETE_FILTER_CMD))
 async def deletefilter(client, message):
