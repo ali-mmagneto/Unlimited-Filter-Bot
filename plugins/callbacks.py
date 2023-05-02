@@ -224,7 +224,7 @@ async def cb_handler(client, query):
         else:
             await query.message.edit_text(
                 f"Some error occured!!"
-            Ü)
+            )
             return
     
     elif query.data == "backcb":
