@@ -33,7 +33,7 @@ async def addfilter(client, message):
     chat_type = message.chat.type
     args = message.text.html.split(None, 1)
 
-    if chat_type == "ChatType.PRIVATE":
+    if chat_type == ChatType.PRIVATE:
         grpid = await active_connection(str(userid))
         if grpid is not None:
             grp_id = grpid
@@ -47,7 +47,7 @@ async def addfilter(client, message):
             await message.reply_text("Herhangi bir gruba bağlı değilim!", quote=True)
             return
 
-    elif (chat_type == "ChatType.GROUP") or (chat_type == "supergroup"):
+    elif (chat_type == ChatType.GROUP) or (chat_type == "supergroup"):
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -236,7 +236,7 @@ async def deletefilter(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
 
-    if chat_type == "private":
+    if chat_type == ChatType.PRIVATE:
         grpid  = await active_connection(str(userid))
         if grpid is not None:
             grp_id = grpid
@@ -249,7 +249,7 @@ async def deletefilter(client, message):
         else:
             await message.reply_text("Hiç bir grupla bağım yok!", quote=True)
 
-    elif (chat_type == "group") or (chat_type == "supergroup"):
+    elif (chat_type == ChatType.GROUP) or (chat_type == "supergroup"):
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -281,7 +281,7 @@ async def delallconfirm(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
 
-    if chat_type == "private":
+    if chat_type == ChatType.PRIVATE:
         grpid  = await active_connection(str(userid))
         if grpid is not None:
             grp_id = grpid
