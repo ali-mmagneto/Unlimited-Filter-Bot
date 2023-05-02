@@ -181,12 +181,12 @@ async def cb_handler(client, query):
 
         if mkact:
             await query.message.edit_text(
-                f"Connected to **{title}**",
+                f"Connected to **{title}**"
             )
             return
         else:
             await query.message.edit_text(
-                f"Some error occured!!",
+                f"Some error occured!!"
             )
             return
 
@@ -200,12 +200,12 @@ async def cb_handler(client, query):
 
         if mkinact:
             await query.message.edit_text(
-                f"Disconnected from **{title}**",
+                f"Disconnected from **{title}**"
             )
             return
         else:
             await query.message.edit_text(
-                f"Some error occured!!",
+                f"Some error occured!!"
             )
             return
     elif "deletecb" in query.data:
@@ -223,9 +223,8 @@ async def cb_handler(client, query):
             return
         else:
             await query.message.edit_text(
-                f"Some error occured!!",
-                parse_mode="md"
-            )
+                f"Some error occured!!"
+            Ü)
             return
     
     elif query.data == "backcb":
@@ -236,7 +235,7 @@ async def cb_handler(client, query):
         groupids = await all_connections(str(userid))
         if groupids is None:
             await query.message.edit_text(
-                "There are no active connections!! Connect to some groups first.",
+                "There are no active connections!! Connect to some groups first."
             )
             return
         buttons = []
