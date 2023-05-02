@@ -218,7 +218,7 @@ async def start(client, message):
                 ]
             ]
         ),
-        reply_to_message_id=message.message_id
+        reply_to_message_id=message.id
     )
     if Config.SAVE_USER == "yes":
         try:
@@ -247,7 +247,7 @@ async def help(client, message):
                 ]
             ]
         ),
-        reply_to_message_id=message.message_id
+        reply_to_message_id=message.id
     )
 
 
@@ -268,7 +268,7 @@ async def about(client, message):
                 ]                
             ]
         ),
-        reply_to_message_id=message.message_id
+        reply_to_message_id=message.id
     )
 
 @trojanz.on_message(filters.command('durum') & filters.regex("status📊"))
