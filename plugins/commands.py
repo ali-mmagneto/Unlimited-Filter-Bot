@@ -30,7 +30,6 @@ async def showid(client, message):
         user_id = message.chat.id
         await message.reply_text(
             f"Your ID : `{user_id}`",
-            parse_mode="md",
             quote=True
         )
     elif (chat_type == "group") or (chat_type == "supergroup"):
@@ -42,7 +41,6 @@ async def showid(client, message):
             reply_id = ""
         await message.reply_text(
             f"Senin ID : `{user_id}`\nGrup ID : `{chat_id}`\n\n{reply_id}",
-            parse_mode="md",
             quote=True
         )   
 
@@ -60,10 +58,10 @@ async def showinfo(client, message):
             try:
                 checkid = int(id)
             except:
-                await message.reply_text("__Geçerli Bir USER ID Gir__", quote=True, parse_mode="md")
+                await message.reply_text("__Geçerli Bir USER ID Gir__", quote=True)
                 return
         else:
-            await message.reply_text("__Geçerli Bir USER ID Gir__", quote=True, parse_mode="md")
+            await message.reply_text("__Geçerli Bir USER ID Gir__", quote=True)
             return           
 
         if Config.SAVE_USER == "yes":
@@ -79,7 +77,7 @@ async def showinfo(client, message):
                 pass
 
         if not name:
-            await message.reply_text("__USER Detayları bulunamadı!!__", quote=True, parse_mode="md")
+            await message.reply_text("__USER Detayları bulunamadı!!__", quote=True)
             return
     else:
         if message.reply_to_message:
@@ -107,7 +105,6 @@ async def showinfo(client, message):
         f"<b>Kullanıcı Link</b> : <a href='tg://user?id={id}'>Click here!</a>\n\n"
         f"<b>DC ID</b> : {dcid}\n\n",
         quote=True,
-        parse_mode="html"
     )
 
 
@@ -206,7 +203,6 @@ async def bot_status(client,message):
         f"{quota_details}"
         f"{disk}",
         quote=True,
-        parse_mode="md"
     )
 
 
