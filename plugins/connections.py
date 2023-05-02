@@ -57,14 +57,12 @@ async def addconnection(client,message):
             if addcon:
                 await message.reply_text(
                     f"**{title}** Başarıyla bağlandı..\nŞimdi grubunuzu pm 'den yönetin!",
-                    quote=True,
-                    parse_mode="md"
+                    quote=True
                 )
                 if (chat_type == "group") or (chat_type == "supergroup"):
                     await client.send_message(
                         userid,
-                        f"**{title}** Bağlanıldı!",
-                        parse_mode="md"
+                        f"**{title}** Bağlanıldı!"
                     )
             else:
                 await message.reply_text(
