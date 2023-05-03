@@ -5,7 +5,7 @@ import pyrogram
 
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.enums import ChatType
+from pyrogram.enums import ChatType, ChatMemberStatus
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
@@ -47,7 +47,7 @@ async def addfilter(client, message):
             await message.reply_text("Herhangi bir gruba bağlı değilim!", quote=True)
             return
 
-    elif (chat_type == ChatType.GROUP) or (chat_type == "supergroup"):
+    elif chat_type in [ChatType.GROUP, ChatType.SUPERGROUP]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -55,7 +55,7 @@ async def addfilter(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS)):
+    if not ((st.status == ChatMemberStatus.ADMINISTRATOR) or (st.status == ChatMemberStatus.OWNER) or (str(userid) in Config.AUTH_USERS)):
         return
         
 
