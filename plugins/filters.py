@@ -179,7 +179,7 @@ async def get_all(client, message):
     
     chat_type = message.chat.type
     userid = message.from_user.id
-    if chat_type == "private":
+    if chat_type == ChatType.PRIVATE:
         
         grpid = await active_connection(str(userid))
         if grpid is not None:
@@ -194,7 +194,7 @@ async def get_all(client, message):
             await message.reply_text("Hiç bir gruba bağlı değilim!", quote=True)
             return
 
-    elif (chat_type == "group") or (chat_type == "supergroup"):
+    elif (chat_type == ChatType.GROUP) or (chat_type == ChatType.SUPERGROUP):
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -202,7 +202,7 @@ async def get_all(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS)):
+    if not ((st.status == ChatMemberStatus.ADMINISTRATOR) or (st.status == ChatMemberStatus.OWNER) or (str(userid) in Config.AUTH_USERS)):
         return
 
     texts = await get_filters(grp_id)
@@ -249,7 +249,7 @@ async def deletefilter(client, message):
         else:
             await message.reply_text("Hiç bir grupla bağım yok!", quote=True)
 
-    elif (chat_type == ChatType.GROUP) or (chat_type == "supergroup"):
+    elif (chat_type == ChatType.GROUP) or (chat_type == ChatType.SUPERGROUP):
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -257,7 +257,7 @@ async def deletefilter(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS)):
+    if not ((st.status == ChatMemberStatus.ADMINISTRATOR) or (st.status == ChatMemberStatus.OWNER) or (str(userid) in Config.AUTH_USERS)):
         return
 
     try:
@@ -295,7 +295,7 @@ async def delallconfirm(client, message):
             await message.reply_text("Hiç bir grupla bağım yok!", quote=True)
             return
 
-    elif (chat_type == "group") or (chat_type == "supergroup"):
+    elif (chat_type == ChatType.GROUP) or (chat_type == ChatType.SUPERGROUP):
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -303,7 +303,7 @@ async def delallconfirm(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if (st.status == "creator") or (str(userid) in Config.AUTH_USERS):
+    if (st.status == ChatMemberStatus.OWNER) or (str(userid) in Config.AUTH_USERS):
         await message.reply_text(
             f" '{title}' grubundaki tüm filterları silinecek.\nDevam etmek istiyor musun??",
             reply_markup=InlineKeyboardMarkup([
