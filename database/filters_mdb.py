@@ -62,6 +62,20 @@ async def get_filters(group_id):
         pass
     return texts
 
+async def get_textler(group_id):
+    mycol = mydb[str(group_id)]
+
+    textler = []
+    query = mycol.find()
+    try:
+        for file in query:
+            text = file['text']
+            enes = f'/filter "{text}" "{file['reply']}"'
+            textler.append(enes)
+    except:
+        pass
+    return textler
+
 
 async def delete_filter(message, text, group_id):
     mycol = mydb[str(group_id)]
