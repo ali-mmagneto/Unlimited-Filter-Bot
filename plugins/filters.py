@@ -2,7 +2,7 @@ import os
 import re
 import io
 import pyrogram
-
+import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.enums import ChatType, ChatMemberStatus
@@ -16,7 +16,8 @@ from database.filters_mdb import(
    find_filter,
    get_filters,
    delete_filter,
-   count_filters
+   count_filters,
+   get_textler
 )
 
 from database.connections_mdb import active_connection
@@ -24,7 +25,18 @@ from database.users_mdb import add_user, all_users
 
 from plugins.helpers import parser,split_quotes
 
-
+@Client.on_message(filters.command("filterlar"))
+async def getirfilt(client, message):
+    userid = message.from_user.id
+    grpid = await active_connection(str(userid))
+    eness = await get_textler(grpid)
+    say = 0
+    for f in eness:
+        say +=1
+        await message.reply_text(f)
+        await asyncio.sleep(1)
+    await message.reply_text(f"{say} tane filter getirildi") 
+                   
 
 @Client.on_message(filters.command(Config.ADD_FILTER_CMD))
 async def addfilter(client, message):
